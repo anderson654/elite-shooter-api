@@ -1,5 +1,4 @@
 const { cleanObject } = require('../../helper/object')
-const { fieldsValidator } = require('../../helper/object-validator')
 
 const shootingActivitiesController = ({ shootingActivitiesService }) => ({
 

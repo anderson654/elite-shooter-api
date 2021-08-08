@@ -9,7 +9,17 @@ const sensorEquipmentsSchema = new Schema({
   },
   type: {
     type: String,
-    required: [true, 'A sensor equipment must have a type']
+    required: false
+  },
+  assign: {
+    type: 'ObjectId',
+    ref: 'ShootingRange',
+    required: false
+  },
+  place: {
+    type: 'ObjectId',
+    ref: 'Place',
+    required: [true, 'A sensor equipment must have belong to a place']
   },
   owner: {
     type: 'ObjectId',

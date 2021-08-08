@@ -1,17 +1,22 @@
-const S = require('sanctuary')
+const ResourceAlreadyExists = require('../errors/resource-already-exists-error')
 
 const shootingActivitiesService = ({ shootingRangesRepository, sanitizer }) => ({
 
-  findById: async (params) => shootingRangesRepository.findOne(params),
-
-  findAll: async (params) => {
-    return shootingRangesRepository.findAll(params)
+  findById: async (params) => {
+    const { id } = params
+    return shootingRangesRepository.findOne({ _id: id })
   },
 
-  create: async (params) => {
-    const shootingRange = await shootingRangesRepository.create(params)
+  findAll: async (params) => shootingRangesRepository.findAll(params),
 
-    return S.Left(shootingRange.value)
+  create: async (params) => {
+    const shootingRangeAlreadyExists = await shootingRangesRepository.findOne(params)
+
+    if (shootingRangeAlreadyExists) {
+      throw new ResourceAlreadyExists('The shooting range already exists')
+    }
+
+    return shootingRangesRepository.create(params)
   }
 
 })

@@ -1,10 +1,12 @@
+const _ = require('lodash')
+
 const shootingRangesController = ({ shootingRangesService }) => ({
 
   findById: async (request) => {
     const { id } = request.params
 
     const serviceParams = {
-      _id: id
+      id
     }
 
     const result = await shootingRangesService.findById(serviceParams)
@@ -16,7 +18,15 @@ const shootingRangesController = ({ shootingRangesService }) => ({
   },
 
   findAll: async (request) => {
-    const result = await shootingRangesService.findAll({})
+    const { user } = request.authPayload
+    const { placeId } = request.query
+
+    const serviceParams = _.pickBy({
+      place: placeId,
+      owner: user.id
+    }, _.identity)
+
+    const result = await shootingRangesService.findAll(serviceParams)
 
     return {
       code: 200,
@@ -25,19 +35,22 @@ const shootingRangesController = ({ shootingRangesService }) => ({
   },
 
   create: async (request) => {
-    const { code, type, placeId, ownerId } = request.body
-    const params = {
+    const { user } = request.authPayload
+    const { code, type, sensorEquipmentId, placeId } = request.body
+
+    const serviceParams = _.pickBy({
       code,
       type,
+      sensorEquipment: sensorEquipmentId,
       place: placeId,
-      owner: ownerId
-    }
+      owner: user.id
+    }, _.identity)
 
-    const result = await shootingRangesService.create(params)
-    
+    const result = await shootingRangesService.create(serviceParams)
+
     return {
       code: 200,
-      body: result.value
+      body: result
     }
   }
 })

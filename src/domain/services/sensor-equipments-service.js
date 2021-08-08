@@ -1,4 +1,4 @@
-const S = require('sanctuary')
+const ResourceAlreadyExists = require('../errors/resource-already-exists-error')
 
 const sensorEquipmentsService = ({ sensorEquipmentsRepository, sanitizer }) => ({
 
@@ -7,9 +7,15 @@ const sensorEquipmentsService = ({ sensorEquipmentsRepository, sanitizer }) => (
   },
 
   create: async (params) => {
+    const sensorEquipmentAlreadyExists = await sensorEquipmentsRepository.findOne(params)
+
+    if (sensorEquipmentAlreadyExists) {
+      throw new ResourceAlreadyExists('The sensor already exists')
+    }
+
     const sensorEquipment = await sensorEquipmentsRepository.create(params)
 
-    return S.Left(sensorEquipment.value)
+    return sensorEquipment
   }
 
 })

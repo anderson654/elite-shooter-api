@@ -1,7 +1,18 @@
+const _ = require('lodash')
+
 const sensorEquipmentsController = ({ sensorEquipmentsService }) => ({
 
   findAll: async (request) => {
-    const result = await sensorEquipmentsService.findAll({})
+    const { user } = request.authPayload
+    const { assign, placeId } = request.query
+
+    const serviceParams = _.pickBy({
+      assign: assign && assign === 'true',
+      place: placeId,
+      owner: user.id
+    }, _.identity)
+
+    const result = await sensorEquipmentsService.findAll(serviceParams)
 
     return {
       code: 200,
@@ -10,17 +21,21 @@ const sensorEquipmentsController = ({ sensorEquipmentsService }) => ({
   },
 
   create: async (request) => {
-    const { code, ownerId } = request.body
-    const params = {
+    const { user } = request.authPayload
+    const { code, type, placeId } = request.body
+
+    const params = _.pickBy({
       code,
-      owner: ownerId
-    }
+      type,
+      place: placeId,
+      owner: user.id
+    }, _.identity)
 
     const result = await sensorEquipmentsService.create(params)
 
     return {
       code: 200,
-      body: result.value
+      body: result
     }
   }
 })

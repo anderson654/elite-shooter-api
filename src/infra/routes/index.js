@@ -49,12 +49,20 @@ const makeRoutes = (fastify) => {
     method: 'GET',
     url: '/sensor-equipments',
     // schema: container.resolve('sensorEquipmentsSchemas').create,
+    onRequest: function (request, reply, done) {
+      request.authPayload = handleAuthorization(request)
+      done()
+    },
     handler: controllerAdapter(container.resolve('sensorEquipmentsController').findAll)
   })
 
   fastify.route({
     method: 'POST',
     url: '/sensor-equipments',
+    onRequest: function (request, reply, done) {
+      request.authPayload = handleAuthorization(request)
+      done()
+    },
     schema: container.resolve('sensorEquipmentsSchemas').create,
     handler: controllerAdapter(container.resolve('sensorEquipmentsController').create)
   })
@@ -121,12 +129,20 @@ const makeRoutes = (fastify) => {
   fastify.route({
     method: 'GET',
     url: '/shooting-ranges',
+    onRequest: function (request, reply, done) {
+      request.authPayload = handleAuthorization(request)
+      done()
+    },
     handler: controllerAdapter(container.resolve('shootingRangesController').findAll)
   })
 
   fastify.route({
     method: 'GET',
     url: '/shooting-ranges/:id',
+    onRequest: function (request, reply, done) {
+      request.authPayload = handleAuthorization(request)
+      done()
+    },
     handler: controllerAdapter(container.resolve('shootingRangesController').findById)
   })
 
@@ -134,6 +150,10 @@ const makeRoutes = (fastify) => {
   fastify.route({
     method: 'POST',
     url: '/shooting-ranges',
+    onRequest: function (request, reply, done) {
+      request.authPayload = handleAuthorization(request)
+      done()
+    },
     handler: controllerAdapter(container.resolve('shootingRangesController').create)
   })
 }

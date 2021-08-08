@@ -13,6 +13,10 @@ const placesSchema = new Schema({
   city: String,
   state: String,
   country: String,
+  active: {
+    type: Boolean,
+    default: true
+  },
   owner: {
     type: 'ObjectId',
     ref: 'User',
