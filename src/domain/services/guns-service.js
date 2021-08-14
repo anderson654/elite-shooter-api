@@ -1,7 +1,7 @@
 const ActionForbidden = require('../errors/action-forbidden-error')
 const ResourceAlreadyExists = require('../errors/resource-already-exists-error')
 
-const gunsService = ({ gunsRepository, sanitizer }) => ({
+const gunsService = ({ gunsRepository }) => ({
 
   findAll: async (params) => gunsRepository.findAll(params),
 

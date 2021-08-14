@@ -1,5 +1,3 @@
-const S = require('sanctuary')
-
 const placesService = ({ placesRepository, sanitizer }) => ({
 
   findById: async (params) => {
@@ -15,17 +13,13 @@ const placesService = ({ placesRepository, sanitizer }) => ({
 
     const placeAlreadyExists = await placesRepository.findOne({ name })
 
-    if (placeAlreadyExists.isRight) {
-      return placeAlreadyExists
-    }
-
-    if (placeAlreadyExists.value) {
-      return S.Right('The place is already registered')
+    if (placeAlreadyExists) {
+      throw new Error('Place already exsits')
     }
 
     const place = await placesRepository.create(params)
 
-    return S.Left(place.value)
+    return place
   }
 
 })

@@ -32,6 +32,7 @@ const io = require('socket.io')(fastify.server, {
 
 })
 const makeRoutes = require('./infra/routes')
+const shootingActivitiesService = require('./domain/services/shooting-activities-service')
 
 makeRoutes(fastify)
 
@@ -53,8 +54,10 @@ io.on('connection', function (socket) {
     }
   })
 
-  socket.on('shootingActivity:start', (shootingActivity) => {
+  socket.on('shootingActivity:start', async (shootingActivity) => {
     console.log('shootingActivity:start')
+
+    await shootingActivitiesService.create()
 
     socket.shootingActivity = shootingActivity
     socket.join(`${shootingActivity.shootingRangeId}`)

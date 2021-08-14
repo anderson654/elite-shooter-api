@@ -2,7 +2,7 @@
 const demosController = ({ demosService }) => ({
 
   create: async (request) => {
-    const result = await demosService.create()
+    await demosService.create()
 
     return {
       code: 204

@@ -19,7 +19,7 @@ const sensorEquipmentsSchema = new Schema({
   place: {
     type: 'ObjectId',
     ref: 'Place',
-    required: [true, 'A sensor equipment must have belong to a place']
+    required: [true, 'A sensor equipment must belong to a place']
   },
   owner: {
     type: 'ObjectId',

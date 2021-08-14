@@ -9,7 +9,7 @@ const demosService = ({
   shootingActivitiesRepository
 }) => ({
 
-  create: async (params) => {
+  create: async () => {
     const demoAdminUser = {
       firstname: faker.name.firstName(),
       lastname: faker.name.lastName(),
@@ -76,7 +76,8 @@ const demosService = ({
       for (const [index] of create4.entries()) {
         const sensorEquipmentDemo = {
           code: faker.address.countryCode(),
-          owner: adminUser._id
+          owner: adminUser._id,
+          place: place._id
         }
 
         const sensorEquipment = await sensorEquipmentsRepository.create(sensorEquipmentDemo)

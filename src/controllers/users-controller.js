@@ -9,7 +9,7 @@ const gunsController = ({ usersService }) => ({
 
     return {
       code: 200,
-      body: result.value
+      body: result
     }
   }
 })

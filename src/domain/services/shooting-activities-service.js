@@ -1,5 +1,3 @@
-const S = require('sanctuary')
-
 const shootingActivitiesService = ({ shootingActivitiesRepository, sanitizer }) => ({
 
   findById: async ({ id }) => {
@@ -32,21 +30,13 @@ const shootingActivitiesService = ({ shootingActivitiesRepository, sanitizer }) 
 
     const userHaveAnOpenActivity = await shootingActivitiesRepository.findOne(queryOpenShootingActivity)
 
-    if (userHaveAnOpenActivity.isRight) {
-      return userHaveAnOpenActivity
-    }
-
-    if (userHaveAnOpenActivity.value) {
-      return S.Right('It should close the open shooting activity before start another')
+    if (userHaveAnOpenActivity) {
+      throw new Error('It should close the open shooting activity before start another')
     }
 
     const shootingActivity = await shootingActivitiesRepository.create(params)
 
-    if (shootingActivity.isRight) {
-      return shootingActivity
-    }
-
-    return S.Left(shootingActivity.value)
+    return shootingActivity
   }
 
 })
