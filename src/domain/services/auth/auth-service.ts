@@ -1,19 +1,22 @@
+import { SigninParams } from "./types/signin"
+
 const authService = ({
   usersRepository,
   auth
-}) => ({
+}: any) => ({
 
-  signin: async (params) => {
+  signin: async (params: SigninParams) => {
     const user = await usersRepository.findOne(params)
 
     if (!user) {
       throw new Error('User doesnt exists')
     }
 
-    const { _id: id, role } = user
+    const { _id, role } = user
 
     return {
-      token: auth.sign({ userId: id, role }),
+      token: auth.sign({ userId: _id, role }),
+      _id,
       role
     }
   }

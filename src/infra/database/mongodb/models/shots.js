@@ -20,6 +20,9 @@ const shotsSchema = new Schema({
     ref: 'ShootingActivity',
     required: [true, 'The shoting activity must have an owner']
   }
+},
+{
+  timestamps: true
 })
 
 shotsSchema.plugin(mongooseLeanVirtuals)

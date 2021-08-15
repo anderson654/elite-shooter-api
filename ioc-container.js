@@ -23,10 +23,14 @@ container.register({
 
 // to configure lifetime for all modules loaded..
 container.loadModules([
-  './src/controllers/**/*.js',
+  './src/handlers/**/*.js',
+  './src/handlers/**/*.ts',
   './src/domain/**/*.js',
+  './src/domain/**/*.ts',
   './src/infra/repositories/**/*.js',
-  './src/infra/adapters/*.js'
+  './src/infra/repositories/**/*.ts',
+  './src/infra/adapters/*.js',
+  './src/infra/adapters/*.ts'
 ], {
   // cwd: __dirname,
   resolverOptions: {

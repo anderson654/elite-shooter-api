@@ -31,6 +31,9 @@ const gunsSchema = new Schema({
     ref: 'User',
     required: [true, 'A gun must have an owner']
   }
+},
+{
+  timestamps: true
 })
 
 gunsSchema.plugin(mongooseLeanVirtuals)

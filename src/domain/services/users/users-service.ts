@@ -1,9 +1,9 @@
-const { validateEmail } = require('../../helper/object-validator')
+import { validator } from '../../../utils/validator'
 
-const usersService = ({ usersRepository, passwordEncrypter, sanitizer }) => ({
+const usersService = ({ usersRepository, passwordEncrypter, sanitizer }: any) => ({
 
   create: async (params) => {
-    const isEmailValid = validateEmail(params.email)
+    const isEmailValid = validator.email(params.email)
 
     if (!isEmailValid) {
       throw new Error('It should have a valid email')

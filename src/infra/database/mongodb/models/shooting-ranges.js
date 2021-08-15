@@ -29,6 +29,9 @@ const shootingRangesSchema = new Schema({
     ref: 'User',
     required: [true, 'The shooting activity must have an owner']
   }
+},
+{
+  timestamps: true
 })
 
 shootingRangesSchema.plugin(mongooseLeanVirtuals)

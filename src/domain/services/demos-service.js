@@ -113,7 +113,8 @@ const demosService = ({
             shootingRange: shootingRange._id,
             place: shootingRanges[randomPlaceIndex].place._id,
             gun: guns[randomGunIndex]._id,
-            owner: user._id
+            owner: user._id,
+            isActive: 0
           }
 
           const shootingActivity = await shootingActivitiesRepository.create(shootingActivityDemo)

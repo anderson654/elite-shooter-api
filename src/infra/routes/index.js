@@ -2,7 +2,7 @@ const container = require('../../../ioc-container')
 const handleAuthorization = require('../../middlewares/handle-authorization')
 const controllerAdapter = require('../adapters/controller-adapter')
 
-const makeRoutes = (fastify) => {
+const makeRoutes = (fastify, io) => {
   fastify.route({
     method: 'GET',
     url: '/',
@@ -116,6 +116,10 @@ const makeRoutes = (fastify) => {
     method: 'GET',
     url: '/places',
     // schema: container.resolve('placesSchemas').create,
+    onRequest: function (request, reply, done) {
+      request.authPayload = handleAuthorization(request)
+      done()
+    },
     handler: controllerAdapter(container.resolve('placesController').findAll)
   })
 
@@ -156,6 +160,10 @@ const makeRoutes = (fastify) => {
     },
     handler: controllerAdapter(container.resolve('shootingRangesController').create)
   })
+
+  io.on('connection', container.resolve('socketIoHandlers').connection)
+
+
 }
 
 module.exports = makeRoutes

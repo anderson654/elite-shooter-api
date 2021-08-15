@@ -1,4 +1,4 @@
-const placesService = ({ placesRepository, sanitizer }) => ({
+const placesService = ({ placesRepository }) => ({
 
   findById: async (params) => {
     return placesRepository.findById({ _id: params.id })

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
 
-mongoose.set('debug', false)
+mongoose.set('debug', true)
+mongoose.set('useFindAndModify', false)
 mongoose.connect('mongodb://localhost:27017/test', { useNewUrlParser: true, useUnifiedTopology: true })

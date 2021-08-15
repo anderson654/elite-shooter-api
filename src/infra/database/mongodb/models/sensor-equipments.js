@@ -26,6 +26,9 @@ const sensorEquipmentsSchema = new Schema({
     ref: 'User',
     required: [true, 'A sensor equipment must have an owner']
   }
+},
+{
+  timestamps: true
 })
 
 sensorEquipmentsSchema.plugin(mongooseLeanVirtuals)

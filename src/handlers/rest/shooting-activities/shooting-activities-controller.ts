@@ -1,4 +1,5 @@
-const { cleanObject } = require('../../helper/object')
+import _ from 'lodash'
+import {sanitizer} from '../../../utils/sanitizer'
 
 const shootingActivitiesController = ({ shootingActivitiesService }) => ({
 
@@ -28,7 +29,7 @@ const shootingActivitiesController = ({ shootingActivitiesService }) => ({
       limit
     } = request.query
 
-    const serviceParams = cleanObject({
+    const serviceParams = sanitizer.cleanObjectDeeply({
       filters: {
         // owner,
         modality,
@@ -38,6 +39,8 @@ const shootingActivitiesController = ({ shootingActivitiesService }) => ({
       populate,
       limit
     })
+
+    console.log(serviceParams)
 
     const result = await shootingActivitiesService.findAll(serviceParams)
 

@@ -1,4 +1,4 @@
-const { cleanObject } = require('../../helper/object')
+import _ from 'lodash'
 
 const placesController = ({ placesService }) => ({
 
@@ -17,11 +17,15 @@ const placesController = ({ placesService }) => ({
   },
 
   findAll: async (request) => {
-    const { owner } = request.query
+    const { user } = request.authPayload
 
-    const params = cleanObject({ owner })
+    const serviceParams = _.pickBy({
+      owner: user.id
+    }, _.identity)
 
-    const result = await placesService.findAll(params)
+    console.log(serviceParams)
+
+    const result = await placesService.findAll(serviceParams)
 
     return {
       code: 200,

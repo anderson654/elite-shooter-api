@@ -31,11 +31,18 @@ const ShootingActivitiesSchema = new Schema({
     default: Date.now(),
     required: [true, 'The shooting activity must have a date']
   },
+  isActive: {
+    type: 'Boolean',
+    default: 1,
+  },
   owner: {
     type: 'ObjectId',
     ref: 'User',
     required: [true, 'The shooting activity must have an owner']
   }
+},
+{
+  timestamps: true
 })
 
 ShootingActivitiesSchema.plugin(mongooseLeanVirtuals)

@@ -22,6 +22,9 @@ const placesSchema = new Schema({
     ref: 'User',
     required: [true, 'A place must have an owner']
   }
+},
+{
+  timestamps: true
 })
 
 placesSchema.plugin(mongooseLeanVirtuals)

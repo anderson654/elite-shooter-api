@@ -28,6 +28,9 @@ const usersSchema = new Schema({
     enum: ['user', 'admin'],
     required: [true, 'The user must have a role']
   }
+},
+{
+  timestamps: true
 })
 
 usersSchema.plugin(mongooseLeanVirtuals)
