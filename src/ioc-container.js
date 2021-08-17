@@ -23,16 +23,16 @@ container.register({
 
 // to configure lifetime for all modules loaded..
 container.loadModules([
-  './src/handlers/**/*.js',
-  './src/handlers/**/*.ts',
-  './src/domain/**/*.js',
-  './src/domain/**/*.ts',
-  './src/infra/repositories/**/*.js',
-  './src/infra/repositories/**/*.ts',
-  './src/infra/adapters/*.js',
-  './src/infra/adapters/*.ts'
+  './handlers/**/*.js',
+  './handlers/**/*.ts',
+  './domain/**/*.js',
+  './domain/**/*.ts',
+  './infra/repositories/**/*.js',
+  './infra/repositories/**/*.ts',
+  './infra/adapters/*.js',
+  './infra/adapters/*.ts'
 ], {
-  // cwd: __dirname,
+  cwd: __dirname,
   resolverOptions: {
     injectionMode: InjectionMode.PROXY
   },

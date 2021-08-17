@@ -1,4 +1,4 @@
-import { CreateShootingActivityParams, ShootingActivitiesRepository, UpdateByIdParams } from "@/domain/contracts/repositories/shooting-activities-repository"
+import { ShootingActivitiesRepository, UpdateByIdParams } from "@/domain/contracts/repositories/shooting-activities-repository"
 
 const ShootingActivity = require('../../database/mongodb/models/shooting-activities')
 
@@ -17,7 +17,7 @@ const shootingActivitiesRepository = (): ShootingActivitiesRepository => ({
 
   findById: async (id: string) => ShootingActivity.findById(id).populate([]).lean().exec(),
 
-  create: async (params: CreateShootingActivityParams) => ((new ShootingActivity(params)).save()),
+  create: async (params: any) => ((new ShootingActivity(params)).save()),
 
   findOne: async (params: any) => ShootingActivity.findOne(params).lean().exec(),
 

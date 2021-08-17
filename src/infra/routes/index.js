@@ -1,4 +1,5 @@
-const container = require('../../../ioc-container')
+
+const container = require('../../ioc-container')
 const handleAuthorization = require('../../middlewares/handle-authorization')
 const controllerAdapter = require('../adapters/controller-adapter')
 
