@@ -8,4 +8,4 @@ const usersRepository = () => ({
 
 })
 
-module.exports = usersRepository
+export default usersRepository

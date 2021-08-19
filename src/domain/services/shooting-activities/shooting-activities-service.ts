@@ -65,4 +65,4 @@ const shootingActivitiesService = ({
 
 })
 
-module.exports = shootingActivitiesService
+export default shootingActivitiesService

@@ -70,4 +70,4 @@ const shootingActivitiesController = ({ shootingActivitiesService }) => ({
   }
 })
 
-module.exports = shootingActivitiesController
+export default shootingActivitiesController

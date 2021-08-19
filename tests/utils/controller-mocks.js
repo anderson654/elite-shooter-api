@@ -5,6 +5,6 @@ const requestMock = () => ({
   headers: {}
 })
 
-module.exports = {
+export default {
   requestMock
 }

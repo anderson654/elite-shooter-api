@@ -49,4 +49,4 @@ const placesController = ({ placesService }) => ({
   }
 })
 
-module.exports = placesController
+export default placesController

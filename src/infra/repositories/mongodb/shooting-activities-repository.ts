@@ -25,4 +25,4 @@ const shootingActivitiesRepository = (): ShootingActivitiesRepository => ({
 
 })
 
-module.exports = shootingActivitiesRepository
+export default shootingActivitiesRepository

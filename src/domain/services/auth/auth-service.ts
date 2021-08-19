@@ -23,4 +23,4 @@ const authService = ({
 
 })
 
-module.exports = authService
+export default authService

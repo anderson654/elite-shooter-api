@@ -36,4 +36,4 @@ const usersService = ({ usersRepository, passwordEncrypter, sanitizer }: any) =>
 
 })
 
-module.exports = usersService
+export default usersService

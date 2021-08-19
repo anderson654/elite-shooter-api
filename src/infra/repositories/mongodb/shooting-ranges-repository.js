@@ -10,4 +10,4 @@ const shootingRangesRepository = () => ({
 
 })
 
-module.exports = shootingRangesRepository
+export default shootingRangesRepository

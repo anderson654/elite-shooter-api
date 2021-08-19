@@ -13,4 +13,4 @@ const sensorEquipmentsRepository = ({ sensorEquipmentsSanitizer }) => ({
 
 })
 
-module.exports = sensorEquipmentsRepository
+export default sensorEquipmentsRepository

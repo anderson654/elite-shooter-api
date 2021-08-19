@@ -83,4 +83,4 @@ const socketIoHandlers = ({ shootingActivitiesService }: { shootingActivitiesSer
   }
 })
 
-module.exports = socketIoHandlers
+export default socketIoHandlers

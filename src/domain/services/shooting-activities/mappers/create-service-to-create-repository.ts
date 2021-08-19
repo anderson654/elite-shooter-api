@@ -1,7 +1,7 @@
-import { CreateShootingActivityParams } from "@/domain/contracts/repositories/shooting-activities-repository";
-import { CreateParams } from "@/domain/contracts/services/shooting-activities-service";
+import { ShootingActivitiesRepository } from "@/domain/contracts/repositories/shooting-activities-repository";
+import { ShootingActivitiesService } from "@/domain/contracts/services/shooting-activities-service";
 
-export const createServiceToCreateRepository = (params: CreateParams): CreateShootingActivityParams => ({
+export const createServiceToCreateRepository = (params: ShootingActivitiesService.CreateParams): ShootingActivitiesRepository.CreateParams => ({
   gun: params.gunId,
   modality: params.modality,
   place: params.placeId,

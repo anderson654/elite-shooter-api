@@ -7,4 +7,4 @@ const sensorEquipmentsSanitizer = () => ({
   }), _.identity)
 })
 
-module.exports = sensorEquipmentsSanitizer
+export default sensorEquipmentsSanitizer

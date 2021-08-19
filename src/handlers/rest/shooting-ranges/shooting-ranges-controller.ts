@@ -55,4 +55,4 @@ const shootingRangesController = ({ shootingRangesService }) => ({
   }
 })
 
-module.exports = shootingRangesController
+export default shootingRangesController

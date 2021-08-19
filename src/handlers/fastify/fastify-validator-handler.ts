@@ -13,4 +13,4 @@ const fastifyValidatorHandler = (fastify) => {
   })
 }
 
-module.exports = fastifyValidatorHandler
+export default fastifyValidatorHandler

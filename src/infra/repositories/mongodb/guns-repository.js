@@ -12,4 +12,4 @@ const gunsRepository = () => ({
 
 })
 
-module.exports = gunsRepository
+export default gunsRepository

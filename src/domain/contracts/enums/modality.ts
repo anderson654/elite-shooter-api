@@ -1,4 +1,4 @@
 export enum Modality {
   Competition = 'competition',
-  Training = 'training'
+  Training = 'training',
 }

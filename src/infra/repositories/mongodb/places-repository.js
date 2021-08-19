@@ -11,4 +11,4 @@ const placesRepository = () => ({
 
 })
 
-module.exports = placesRepository
+export default placesRepository

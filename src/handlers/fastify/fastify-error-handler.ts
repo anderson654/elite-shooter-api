@@ -13,4 +13,4 @@ const fastifyErrorHandler = (fastify) => {
   })
 }
 
-module.exports = fastifyErrorHandler
+export default fastifyErrorHandler
