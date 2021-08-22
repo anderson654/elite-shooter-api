@@ -7,10 +7,10 @@ const sensorEquipmentsSchema = new Schema({
     type: String,
     required: [true, 'A sensor equipment must have a code']
   },
-  // type: {
-  //   type: String,
-  //   required: [true, 'A sensor equipment must have a type']
-  // },
+  type: {
+    type: String,
+    required: [true, 'A sensor equipment must have a type']
+  },
   owner: {
     type: 'ObjectId',
     ref: 'User',
