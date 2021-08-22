@@ -6,7 +6,8 @@ const demosService = ({
   gunsRepository,
   shootingRangesRepository,
   sensorEquipmentsRepository,
-  shootingActivitiesRepository
+  shootingActivitiesRepository,
+  //competitionsRepository
 }) => ({
 
   create: async (params) => {
@@ -120,7 +121,9 @@ const demosService = ({
         }
       }
     }
+    //await competitionsRepository.create()
   }
+
 
 })
 

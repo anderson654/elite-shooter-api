@@ -33,8 +33,17 @@ const usersService = ({ usersRepository, passwordEncrypter, sanitizer }) => ({
     const user = await usersRepository.create(newUser)
 
     return S.Left(user.value)
-  }
+  },
 
+  //criar metodo findByUsername usar o de cima como exemplo
+  findByUsername: async (params) => {
+    console.warn(params.username)
+
+
+    const user = await usersRepository.findOne({ username: params.username })
+    return user
+  }
+ 
 })
 
 module.exports = usersService

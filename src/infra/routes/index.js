@@ -64,6 +64,18 @@ const makeRoutes = (fastify) => {
     url: '/users',
     handler: controllerAdapter(container.resolve('usersController').create)
   })
+//gabriel
+  fastify.route({
+    method: 'GET',
+    url: '/users',
+    handler: controllerAdapter(container.resolve('usersController').find)
+  })
+
+  fastify.route({
+    method: 'GET',
+    url: '/user/competitions/:user_id',
+    handler: controllerAdapter(container.resolve('competitionsController').findCompetitionsByUserId)
+  })
 
   fastify.route({
     method: 'GET',
@@ -135,6 +147,19 @@ const makeRoutes = (fastify) => {
     method: 'POST',
     url: '/shooting-ranges',
     handler: controllerAdapter(container.resolve('shootingRangesController').create)
+  })
+
+  //gabriel
+  fastify.route({
+    method: 'POST',
+    url: '/competitions',
+    handler: controllerAdapter(container.resolve('competitionsController').create)
+  })
+
+  fastify.route({
+    method: 'GET',
+    url: '/competitions/list',
+    handler: controllerAdapter(container.resolve('competitionsController').findAll)
   })
 }
 

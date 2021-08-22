@@ -11,6 +11,19 @@ const gunsController = ({ usersService }) => ({
       code: 200,
       body: result.value
     }
+  },
+
+  find: async (request) => {
+    const { username } = request.query
+
+    const params = { username }
+
+    const result = await usersService.findByUsername(params)
+
+    return {
+      code:200,
+      body: result
+    }
   }
 })
 
