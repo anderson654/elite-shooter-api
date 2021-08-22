@@ -21,9 +21,7 @@ const competitionsController = ({ competitionsService }) => ({
     const { local, status } = request.query
 
     
-    const serviceParams = cleanObject({ filters:{
-      local, status }
-    })
+    const serviceParams = cleanObject({ local, status })
 
     result = await competitionsService.findAll(serviceParams)
     
