@@ -8,7 +8,7 @@ const competitionsSchema = new Schema({
     type: String,
     required: [true, 'A competition must have a name.']
   },
-  users_id: [{
+  usersId: [{
     type: 'ObjectId',
     ref: 'User',
   }]
@@ -17,7 +17,7 @@ const competitionsSchema = new Schema({
     type: String,
     required: [true, 'A competition must have a location.']
   },
-  punctuation: {
+  score: {
     type: Number,
     required: [true, 'The competition must have a set score.']
   },

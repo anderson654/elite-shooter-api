@@ -2,7 +2,11 @@ const Competitions = require('../../database/mongodb/models/competitions')
 
 const competitionsRepository = () => ({
 
-  findAll: async (params) => Competitions.find(params).lean().exec(),
+  findAll: async ({
+    filters = {}
+  }) => Competitions.find(filters).lean({ virtuals: true }).exec(),
+
+  // findAll: async (params) => Competitions.find(params).lean().exec(),
 
   findOne: async (params) => Competitions.findOne(params).lean().exec(),
 

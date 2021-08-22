@@ -1,13 +1,14 @@
+const { cleanObject } = require('../../helper/object')
 const competitionsController = ({ competitionsService }) => ({
 
   findCompetitionsByUserId: async (request) => {
-    const { user_id } = request.params
+    const { userId } = request.params
 
     const serviceParams = {
-      users_id: user_id,
+      usersId: userId,
     }
  
-    const result = await competitionsService.findAll( serviceParams )
+    const result = await competitionsService.findAll(serviceParams)
 
     return {
       code: 200,
@@ -19,17 +20,13 @@ const competitionsController = ({ competitionsService }) => ({
 
     const { local, status } = request.query
 
-    const serviceParams = {
-      local: local,
-      status: status
-    }
+    
+    const serviceParams = cleanObject({ filters:{
+      local, status }
+    })
 
-    let result;
-    if(serviceParams.local && serviceParams.status != ''){
-      result = await competitionsService.findAll(serviceParams)
-    }else{
-      result = await competitionsService.findAll({})
-    }
+    result = await competitionsService.findAll(serviceParams)
+    
 
       return {
         code: 200,
@@ -37,26 +34,11 @@ const competitionsController = ({ competitionsService }) => ({
       }
     },
 
-  findLocalAndStatus:async (request) => {
-    const { local, status } = request.query
-
-    const serviceParams = {
-      local: local,
-      status: status
-    }
-    const result = await competitionsService.findAll(serviceParams)
-
-      return {
-        code: 200,
-        body: local
-      }
-    },
-
   create: async (request) => {
 
-    const { users_id, local, name, punctuation, status, date } = request.body
+    const { usersId, local, name, score, status, date } = request.body
 
-    const params = { users_id, local, name, punctuation, status, date }
+    const params = { usersId, local, name, score, status, date }
 
     const result = await competitionsService.create(params)
 
